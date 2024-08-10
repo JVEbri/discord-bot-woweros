@@ -7,6 +7,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 from aiohttp import web
+import asyncio
+
 
 # Obtener el token desde la variable de entorno
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
