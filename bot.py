@@ -16,16 +16,18 @@ client_secret = 'AGJHyd7fanHMHgX33JFdWdqrnsUgbSNO'
 
 def get_time(timestamp_ms):
     timestamp = datetime.utcfromtimestamp(timestamp_ms / 1000)  # Convertir de ms a segundos
-    current_time = datetime.now()
+    current_time = datetime.utcnow()
     
     # Calcular el tiempo transcurrido
     time_diff = current_time - timestamp
     hours_passed = time_diff.total_seconds() / 3600  # Convertir segundos a horas
     
     if hours_passed < 1:
-        formatted_time = int(time_diff.total_seconds() / 60) 
+        minutes_passed = int(time_diff.total_seconds() / 60) 
+        formatted_time = f"Hace {minutes_passed} minutos"
     else:
         formatted_time = f"Hace {int(hours_passed)} horas"
+    
     return formatted_time
 
 async def getAccesToken():
