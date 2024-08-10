@@ -6,6 +6,7 @@ from afijos import Afijos
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from aiohttp import web
 
 # Obtener el token desde la variable de entorno
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
@@ -186,5 +187,17 @@ async def ejemplo(ctx):
 @bot.command(name='c',help='¿Quieres amor?')
 async def c(ctx):
     await ctx.send("¡Te envío un corazón! ❤️")
+
+async def handle(request):
+    return web.Response(text="Hello, world")
+
+app = web.Application()
+app.router.add_get('/', handle)
+
+port = int(os.getenv("PORT", 8080))
+runner = web.AppRunner(app)
+runner.setup()
+site = web.TCPSite(runner, '0.0.0.0', port)
+site.start()
 # Corre el bot con el token
 bot.run(DISCORD_TOKEN)
