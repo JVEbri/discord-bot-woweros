@@ -182,4 +182,4 @@ async def ejemplo(ctx):
 async def c(ctx):
     await ctx.send("¡Te envío un corazón! ❤️")
 # Corre el bot con el token
-bot.run('MTI3MTUxNjA0NjAwNzczMDE5Ng.G0dN2D.K9OIUi2uH4Ry2U1dSZzHEZ2gGdUXhIQv1g1p4U')
+bot.run('MTI3MTUxNjA0NjAwNzczMDE5Ng.Go0DH2.7_nMnvy7AQlaTmXuyjaoG78rUa7gVEaSjh3HdU')
