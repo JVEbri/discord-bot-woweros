@@ -6,8 +6,6 @@ from afijos import Afijos
 import os
 from dotenv import load_dotenv
 load_dotenv()
-from aiohttp import web
-import asyncio
 
 
 # Obtener el token desde la variable de entorno
@@ -190,24 +188,5 @@ async def ejemplo(ctx):
 async def c(ctx):
     await ctx.send("¡Te envío un corazón! ❤️")
 
-async def handle(request):
-    return web.Response(text="Hello, world")
-
-app = web.Application()
-app.router.add_get('/', handle)
-
-port = int(os.getenv("PORT", 8080))
-
-async def start_server():
-    app = web.Application()
-    runner = web.AppRunner(app)
-    await runner.setup()
-    site = web.TCPSite(runner, '0.0.0.0', port)
-    await site.start()
-
-if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(start_server())
-    loop.run_forever()
 # Corre el bot con el token
 bot.run(DISCORD_TOKEN)
