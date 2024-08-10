@@ -195,9 +195,17 @@ app = web.Application()
 app.router.add_get('/', handle)
 
 port = int(os.getenv("PORT", 8080))
-runner = web.AppRunner(app)
-runner.setup()
-site = web.TCPSite(runner, '0.0.0.0', port)
-site.start()
+
+async def start_server():
+    app = web.Application()
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', port)
+    await site.start()
+
+if __name__ == "__main__":
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(start_server())
+    loop.run_forever()
 # Corre el bot con el token
 bot.run(DISCORD_TOKEN)
