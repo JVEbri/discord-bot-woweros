@@ -3,7 +3,12 @@ from discord.ext import commands
 import requests
 from datetime import datetime
 from afijos import Afijos
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+# Obtener el token desde la variable de entorno
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 # Datos del cliente
 client_id = '7c9cc266513f45188d2328232366ab86'
 client_secret = 'AGJHyd7fanHMHgX33JFdWdqrnsUgbSNO'
@@ -182,4 +187,4 @@ async def ejemplo(ctx):
 async def c(ctx):
     await ctx.send("¡Te envío un corazón! ❤️")
 # Corre el bot con el token
-bot.run('MTI3MTUxNjA0NjAwNzczMDE5Ng.Go0DH2.7_nMnvy7AQlaTmXuyjaoG78rUa7gVEaSjh3HdU')
+bot.run(DISCORD_TOKEN)
